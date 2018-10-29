@@ -1,0 +1,32 @@
+body {
+  background-image: url("/Users/codymj/TriviaGame/assets/images/office_bd.jpg")
+}
+
+.office {
+  font-family: itc-american-typewriter, serif;
+}
+
+.font {
+  font-size: 100px;
+  font-weight: 500;
+  background: black;
+  color: white;
+}
+
+
+#startBtn {
+  height: 100px;
+  width: 200px;
+  font-size: 50px;
+  margin-top: 100px;
+  font-family: itc-american-typewriter, serif;
+  border: 1px dashed black;
+
+}
+
+#startBtn:hover {
+  background: black;
+  color: white;
+  border: 1px dashed white;
+
+}
