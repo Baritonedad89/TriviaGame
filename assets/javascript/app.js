@@ -91,11 +91,68 @@ var questions = [{
     },
     correctAnswer: "d"
   },
-
 ]
 
+// var quizContainer = $("#quiz");
+// var resultsContainer = $("#results")
+//
+// function buildQuiz(){
+//   // we'll need a place to store the html output
+//   var output = [];
+//
+//   // for each question...
+//   questions.forEach((currentQuestion, questionNumber) => {
+//
+// // to store the list of answer choices
+//   var answers = [];
+//
+//   //  and for each available answer...
+//   for (letter in currentQuestion.answers){
+//
+//     //...add an html radio button
+//     answers.push(`<label><input type="radio" name="question${questionNumber}" value="${letter}">${letter} : ${currentQuestion.answers[letter]}</label>`);
+//   }
+//
+// // add this question and its answers to the output
+// output.push (`<div class="question">${currentQuestion.question}</div><div class="answers">${answers.join('')}</div>`);
+// });
+// // finally combine out output list into one string of html and put it on the page
+// quizContainer.innerHTML = output.join('');
+// }
+//
+//
+// function showResults(){
+// // gather answer containers from our quiz
+//
+//   var answerContainers.querySelectorAll('.answers');
+//
+//   // keep track of user's answers
+//   var numCorrect = 0;
+//
+// //  for each question...
+// questions.forEach( (currentQuestion, questionNumber) => {
+//
+//   // find selected answer
+//   var answerContainer = answerContainers[questionNumber];
+//   var selector = 'input[name=question' + questionNumber+']:checked';
+// }
+//
+//
+// )
+//
+//
+//
+//
+//
+// };
+//
+//
+// buildQuiz();
+
+
 var getQuestions = function () {
-  for (var i = 0; i < questions.length + 1; i++) {
+  for (var i = 0; i < questions.length -1; i++) {
+
       $("#questionDiv").html(`<h3>${question}</h3>`);
       $("#choiceA").html(`<div class="questionOptions"><input  type="radio" name="option" id="AnswerA" value="a">${answerA}<label id="choiceA" for="AnswerA"></label></div>`)
       $("#choiceB").html(`<div class="questionOptions"><input  type="radio" name="option" id="AnswerB" value="b">${answerB}<label id="choiceB" for="AnswerB"></label></div>`)
