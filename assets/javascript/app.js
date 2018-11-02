@@ -1,11 +1,7 @@
 var correct = 0;
 var incorrect = 0;
-var question = null;
-var answerA= null;
-var answerB= null;
-var answerC= null;
-var answerD= null;
-var seconds = 45;
+var submitBtn = null;
+var seconds = 120;
 var intervalId = null;
 
 // for (var i = 0; i < questions.length; i++) {
@@ -93,86 +89,30 @@ var questions = [{
   },
 ]
 
-// var quizContainer = $("#quiz");
-// var resultsContainer = $("#results")
-//
-// function buildQuiz(){
-//   // we'll need a place to store the html output
-//   var output = [];
-//
-//   // for each question...
-//   questions.forEach((currentQuestion, questionNumber) => {
-//
-// // to store the list of answer choices
-//   var answers = [];
-//
-//   //  and for each available answer...
-//   for (letter in currentQuestion.answers){
-//
-//     //...add an html radio button
-//     answers.push(`<label><input type="radio" name="question${questionNumber}" value="${letter}">${letter} : ${currentQuestion.answers[letter]}</label>`);
-//   }
-//
-// // add this question and its answers to the output
-// output.push (`<div class="question">${currentQuestion.question}</div><div class="answers">${answers.join('')}</div>`);
-// });
-// // finally combine out output list into one string of html and put it on the page
-// quizContainer.innerHTML = output.join('');
-// }
-//
-//
-// function showResults(){
-// // gather answer containers from our quiz
-//
-//   var answerContainers.querySelectorAll('.answers');
-//
-//   // keep track of user's answers
-//   var numCorrect = 0;
-//
-// //  for each question...
-// questions.forEach( (currentQuestion, questionNumber) => {
-//
-//   // find selected answer
-//   var answerContainer = answerContainers[questionNumber];
-//   var selector = 'input[name=question' + questionNumber+']:checked';
-// }
-//
-//
-// )
-//
-//
-//
-//
-//
-// };
-//
-//
-// buildQuiz();
+var questionArray = [];
+var optionsArray = [];
+
 
 
 var getQuestions = function () {
-  for (var i = 0; i < questions.length -1; i++) {
+  for (var i = 0; i < questions.length ; i++) {
+    // creates a new div for each answer
+    var newDiv = $(`<div>${questions[i].question}</div>`)
+    var newRadioBtnA = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerA" value="a"><label id="choiceA" for="AnswerA">${questions[i].answers.a}</label></div>`)
+    var newRadioBtnB = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerB" value="b"><label id="choiceB" for="AnswerB">${questions[i].answers.b}</label></div>`)
+    var newRadioBtnC = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerC" value="c"><label id="choiceC" for="AnswerC">${questions[i].answers.c}</label></div>`)
+    var newRadioBtnD = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerD" value="d"><label id="choiceD" for="AnswerD">${questions[i].answers.d}</label></div>`)
 
-      $("#questionDiv").html(`<h3>${question}</h3>`);
-      $("#choiceA").html(`<div class="questionOptions"><input  type="radio" name="option" id="AnswerA" value="a">${answerA}<label id="choiceA" for="AnswerA"></label></div>`)
-      $("#choiceB").html(`<div class="questionOptions"><input  type="radio" name="option" id="AnswerB" value="b">${answerB}<label id="choiceB" for="AnswerB"></label></div>`)
-      $("#choiceC").html(`<div class="questionOptions"><input  type="radio" name="option" id="AnswerC" value="c">${answerC}<label id="choiceC" for="AnswerC"></label></div>`)
-      $("#choiceD").html(`<div class="questionOptions"><input  type="radio" name="option" id="AnswerD" value="d">${answerD}<label id="choiceD" for="AnswerD"></label></div>`)
-      question = questions[i].question;
-      answerA = questions[i].answers.a;
-      answerB =questions[i].answers.b;
-      answerC =questions[i].answers.c;
-      answerD =questions[i].answers.d;
+    // appends all radio buttons to the contentDiv
+    $("#contentDiv").append(newDiv)
+    $("#contentDiv").append(newRadioBtnA)
+    $("#contentDiv").append(newRadioBtnB)
+    $("#contentDiv").append(newRadioBtnC)
+    $("#contentDiv").append(newRadioBtnD)
+
 
   }
 }
-
-
-
-
-
-
-
 
 // function passing into the setInterval function argument
 var tick = function () {
@@ -181,19 +121,56 @@ var tick = function () {
     if (seconds == 0) {
       clearInterval(intervalId);
       // eventually write on the display you ran out of time and then move on to the next question
-      alert("Times up!")
-
+      // alert("Times up!")
     }
 }
 
 var timer = function (){
   intervalId = setInterval(tick, 1000);
 }
-
+var submitBtn = null;
 // on the start button click
 $("#startBtn").on("click", function() {
   $(".back-white").css("background", "white");
   $("#startBtn").hide();
   getQuestions()
   timer()
+  submitBtn = $("#submit").html("<button>submit</button")
+  getResults()
+  showResults()
 })
+
+var getResults = function () {
+  $(submitBtn).on("click", function (){
+    console.log("working")
+    // make a show results function that shows the correct and incorrect #
+  })
+}
+
+var userAnswer = null;
+var showResults = function () {
+  for (var i = 0; i < questions.length ; i++) {
+  currentQuestion = questions[i].correctAnswer;
+  userAnswer = $(`input[name=question-${i}-option]`).click(function(){
+    console.log ($(this).val())
+    console.log($(`input[name=question-${i}-option]:checked`).val());
+    })
+  }
+
+    if (userAnswer == currentQuestion) {
+      correct++;
+      console.log(correct)
+      console.log("I think this is working right!")
+    } else {console.log("wrong!")
+
+  }
+}
+
+
+
+// var getBtnText = function (){
+// $("input").on("click", function(){
+//   $(this).text.().toString().trim()
+//
+// })
+// }
