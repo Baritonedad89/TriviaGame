@@ -137,34 +137,40 @@ $("#startBtn").on("click", function() {
   timer()
   submitBtn = $("#submit").html("<button>submit</button")
   getResults()
-  showResults()
 })
 
 var getResults = function () {
   $(submitBtn).on("click", function (){
-    console.log("working")
+    showResults()
     // make a show results function that shows the correct and incorrect #
   })
 }
 
 var userAnswer = null;
 var showResults = function () {
+  correct = 0;
   for (var i = 0; i < questions.length ; i++) {
-  currentQuestion = questions[i].correctAnswer;
-  userAnswer = $(`input[name=question-${i}-option]`).click(function(){
-    console.log ($(this).val())
-    console.log($(`input[name=question-${i}-option]:checked`).val());
-    })
-  }
+  var currentQuestion = questions[i].correctAnswer;
+  userAnswer = $(`input[name=question-${i}-option]:checked`).val()
 
-    if (userAnswer == currentQuestion) {
+    if (userAnswer === currentQuestion) {
       correct++;
-      console.log(correct)
-      console.log("I think this is working right!")
-    } else {console.log("wrong!")
+      console.log(`correct count is ${correct}`);
+      console.log("I think this is working right!");
+    } else {
+      incorrect++
+      console.log(`incorrect count is ${incorrect}`);
 
+	  console.log("wrong!");
   }
 }
+}
+
+//submit-quiz is a class on a button at the end of the trivia quiz
+// $(".submit-quiz").click(showResults);
+
+//submit-quiz is a class on a button at the end of the trivia quiz
+// $(".submit-quiz").click(showResults);
 
 
 
