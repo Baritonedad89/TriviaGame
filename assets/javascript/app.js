@@ -149,21 +149,24 @@ var showResults = function () {
     $("#resultsDiv").show();
     $("#resultsDiv").html()
     $("#reset-game").on("click", resetGame)
+    $(".rightResults").html(correct);
+    $(".wrongResults").html(incorrect);
+
 
   })
 }
-// reset game function
+// reset game function - I can't figure out how to reset the questions so that none of the
+// radio buttons are selected
 var resetGame = function (){
   $(".back-white").css("background", "white");
-  var correct = 0;
-  var incorrect = 0;
+   correct = 0;
+   incorrect = 0;
   $("#resultsDiv").hide();
+  $("#timeDiv").show()
   $("#contentDiv").show()
   $("#submit").show()
-  timer()
 }
- // runs the reset game function when the play again button is clicked 
-$("#reset-game").on("click",resetGame)
+
 
 var userAnswer = null;
 var getResults = function () {
@@ -176,7 +179,9 @@ var getResults = function () {
       correct++;
       console.log(`correct count is ${correct}`);
       console.log("I think this is working right!");
-    } else {
+    }
+    // if one of the buttons in each question isn't checked alert must select something
+    else {
       incorrect++
       console.log(`incorrect count is ${incorrect}`);
 
@@ -185,17 +190,5 @@ var getResults = function () {
 }
 }
 
-//submit-quiz is a class on a button at the end of the trivia quiz
-// $(".submit-quiz").click(showResults);
-
-//submit-quiz is a class on a button at the end of the trivia quiz
-// $(".submit-quiz").click(showResults);
-
-
-
-// var getBtnText = function (){
-// $("input").on("click", function(){
-//   $(this).text.().toString().trim()
-//
-// })
-// }
+// runs the reset game function when the play again button is clicked
+$("#reset-game").on("click",resetGame)
