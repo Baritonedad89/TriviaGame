@@ -136,18 +136,37 @@ $("#startBtn").on("click", function() {
   getQuestions()
   timer()
   submitBtn = $("#submit").html("<button>submit</button")
-  getResults()
+  showResults()
 })
 
-var getResults = function () {
+var showResults = function () {
   $(submitBtn).on("click", function (){
-    showResults()
-    // make a show results function that shows the correct and incorrect #
+    getResults()
+    console.log("working")
+    $("#contentDiv").hide()
+    $("#timeDiv").hide()
+    $("#submit").hide()
+    $("#resultsDiv").show();
+    $("#resultsDiv").html()
+    $("#reset-game").on("click", resetGame)
+
   })
 }
+// reset game function
+var resetGame = function (){
+  $(".back-white").css("background", "white");
+  var correct = 0;
+  var incorrect = 0;
+  $("#resultsDiv").hide();
+  $("#contentDiv").show()
+  $("#submit").show()
+  timer()
+}
+ // runs the reset game function when the play again button is clicked 
+$("#reset-game").on("click",resetGame)
 
 var userAnswer = null;
-var showResults = function () {
+var getResults = function () {
   correct = 0;
   for (var i = 0; i < questions.length ; i++) {
   var currentQuestion = questions[i].correctAnswer;

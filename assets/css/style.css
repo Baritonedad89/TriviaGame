@@ -2,6 +2,10 @@ body {
   background-image: url("/Users/codymj/TriviaGame/assets/images/office_bd.jpg")
 }
 
+.no-display {
+  display:none;
+}
+
 .office {
   font-family: itc-american-typewriter, serif;
 }
