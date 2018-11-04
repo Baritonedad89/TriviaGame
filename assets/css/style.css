@@ -1,7 +1,10 @@
 body {
-  background-image: url("/Users/codymj/TriviaGame/assets/images/office_bd.jpg")
-}
+  background-image: url("/Users/codymj/TriviaGame/assets/images/office_bd.png")
 
+}
+.container{
+    width: 2920px !important;
+}
 .no-display {
   display:none;
 }
@@ -9,27 +12,108 @@ body {
 .office {
   font-family: itc-american-typewriter, serif;
 }
+.time-format {
+  font-family: itc-american-typewriter, serif;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: #4484b9;
+  font-weight: bold;
+}
+/* input[type=radio] {
+  border:0px;
+  width: 15%;
+  height: .6em;
+} */
+h3, .rightResults, .wrongResults{
+  font-family: itc-american-typewriter, serif;
+  text-align: center;
+  font-size: 30px;
+
+
+}
+
+#results-hd {
+  font-family: itc-american-typewriter, serif;
+font-size: 50px;
+text-align: center;
+}
+#format-answers {
+  font-family: itc-american-typewriter, serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 75px;
+
+
+}
+#question-format{
+  font-family: itc-american-typewriter, serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 75px;
+  margin-top: 30px;
+  margin-bottom: 20px
+}
 
 .font {
-  font-size: 75px;
+  font-size: 100px;
   font-weight: 500;
+  letter-spacing: 5px;
   background: black;
+  opacity: 0.9;
   color: white;
 }
 
+#start-btn-bg {
+  background: #4484b9;
+  opacity: 0.9;
+  height: 50%;
+}
+
+.coolHover {
+  opacity: 1;
+
+}
 
 #startBtn {
-  height: 50px;
-  width: 100px;
-  font-size: 25px;
+  opacity: 1;
+  z-index: 1;
+  height: 200px;
+  width: 300px;
+  font-size: 100px;
   margin-top: 100px;
   font-family: itc-american-typewriter, serif;
-  border: 1px dashed black;
+  background: white;
+  border: 1px solid white;
 
 }
 
 #startBtn:hover {
-  background: black;
+  background: white;
+  color: #4484b9;
+  border: 1px solid white;
+}
+button {
+  margin-top: 50px;
+  height: 75px;
+  width: 100%;
+  font-size: 50px;
+  background: #4484b9;
   color: white;
-  border: 1px dashed white;
+  padding-bottom: 20px;
+}
+
+button:hover {
+background: #68a9df;
+}
+
+.sticky {
+  background: white;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }

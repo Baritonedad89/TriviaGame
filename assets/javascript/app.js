@@ -1,7 +1,7 @@
 var correct = 0;
 var incorrect = 0;
 var submitBtn = null;
-var seconds = 120;
+var seconds = 121;
 var intervalId = null;
 
 // for (var i = 0; i < questions.length; i++) {
@@ -89,15 +89,11 @@ var questions = [{
   },
 ]
 
-var questionArray = [];
-var optionsArray = [];
-
-
-
 var getQuestions = function () {
   for (var i = 0; i < questions.length ; i++) {
+
     // creates a new div for each answer
-    var newDiv = $(`<div>${questions[i].question}</div>`)
+    var newDiv = $(`<div id="question-format">${questions[i].question}</div>`)
     var newRadioBtnA = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerA" value="a"><label id="choiceA" for="AnswerA">${questions[i].answers.a}</label></div>`)
     var newRadioBtnB = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerB" value="b"><label id="choiceB" for="AnswerB">${questions[i].answers.b}</label></div>`)
     var newRadioBtnC = $(`<div id="format-answers"><input type="radio" name="question-${i}-option" id="AnswerC" value="c"><label id="choiceC" for="AnswerC">${questions[i].answers.c}</label></div>`)
@@ -117,11 +113,9 @@ var getQuestions = function () {
 // function passing into the setInterval function argument
 var tick = function () {
     seconds--;
-    $("#timeDiv").html(`<h2>Time Remaining: ${seconds} seconds</h2>`);
+    $("#timeDiv").html(`<h2 class="time-format">Time Remaining: ${seconds} seconds</h2>`);
     if (seconds == 0) {
       clearInterval(intervalId);
-      // eventually write on the display you ran out of time and then move on to the next question
-      // alert("Times up!")
     }
 }
 
@@ -131,14 +125,15 @@ var timer = function (){
 var submitBtn = null;
 // on the start button click
 $("#startBtn").on("click", function() {
-  $(".back-white").css("background", "white");
-  $("#startBtn").hide();
-  getQuestions()
   timer()
+  $("#submit").css("display", "initial")
+  $("#startBtn").hide();
+  $("#start-btn-bg").hide()
+  getQuestions()
   submitBtn = $("#submit").html("<button>submit</button")
   showResults()
 })
-
+// submit button appears after start to submit the results of the trivia
 var showResults = function () {
   $(submitBtn).on("click", function (){
     getResults()
@@ -151,6 +146,8 @@ var showResults = function () {
     $("#reset-game").on("click", resetGame)
     $(".rightResults").html(correct);
     $(".wrongResults").html(incorrect);
+    clearInterval(intervalId);
+
 
 
   })
@@ -158,19 +155,24 @@ var showResults = function () {
 // reset game function - I can't figure out how to reset the questions so that none of the
 // radio buttons are selected
 var resetGame = function (){
-  $(".back-white").css("background", "white");
-   correct = 0;
-   incorrect = 0;
+   $("input").prop('checked', false);
+  $("#timeDiv").empty()
   $("#resultsDiv").hide();
   $("#timeDiv").show()
   $("#contentDiv").show()
   $("#submit").show()
+  seconds = 121;
+  clearInterval(intervalId);
+timer()
+
+
 }
 
 
 var userAnswer = null;
 var getResults = function () {
   correct = 0;
+  incorrect = 0;
   for (var i = 0; i < questions.length ; i++) {
   var currentQuestion = questions[i].correctAnswer;
   userAnswer = $(`input[name=question-${i}-option]:checked`).val()
@@ -189,6 +191,32 @@ var getResults = function () {
   }
 }
 }
+var coolHover = function() {
+  $("#startBtn").mouseover(function (){
+    $("#start-btn-bg").css({"opacity": "1","background":"#4484b9","height": "50%"})
+})
+}
+var coolHoverTwo = function() {
+  $("#startBtn").mouseout(function (){
+    $("#start-btn-bg").css({"opacity": "0.9","background":"#4484b9","height": "50%"})
+})
+}
+// shows the time remaining as user scrolls - I'm really proud of this one lol 
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("timeDiv");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
 
 // runs the reset game function when the play again button is clicked
 $("#reset-game").on("click",resetGame)
+coolHover()
+coolHoverTwo()
