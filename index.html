@@ -17,6 +17,8 @@
     <div class="col-md-auto">
         <h1 class="office font mt-2 text-center rounded p-2 mt-2">the office trivia</h1>
     </div>
+
+    <!-- first row closing div -->
   </div>
 
 
@@ -25,13 +27,17 @@
     <div class="col-md mt-5">
       <div id="startBtn" class="text-center mx-auto">start</div>
   </div>
+
+  <!-- second row closing div -->
 </div>
 
 
   <div class="row justify-content-md-center ">
-    <div class="col-md bg-light h-auto w-auto pb-4" id="timer">
+    <div class="col-md bg-light h-auto w-auto add-a-class-results add-a-class-questions" id="timer">
       <div id="timeDiv"></div>
       <div  id="contentDiv"></div>
+      <div id="times-up" class="no-display"></div>
+      <button id="times-up-reset" class="no-display">Play again</button>
       <div  id="resultsDiv" class="no-display">
         <h1 id="results-hd">Results</h1>
         <h3>Correct:<span class="rightResults"></span></h3>
@@ -40,13 +46,15 @@
       </div>
       <div id="submit" class="no-display mx-auto"></div>
       </div>
+      <div class="footer"></div>
 
 
-
+      <!-- third row closing div -->
     </div>
+
+    <!-- the container closing div -->
   </div>
 
-<!-- the container closing div -->
 <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>

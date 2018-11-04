@@ -2,9 +2,7 @@ body {
   background-image: url("/Users/codymj/TriviaGame/assets/images/office_bd.png")
 
 }
-.container{
-    width: 2920px !important;
-}
+
 .no-display {
   display:none;
 }
@@ -21,17 +19,16 @@ body {
   color: #4484b9;
   font-weight: bold;
 }
-/* input[type=radio] {
+input[type=radio] {
   border:0px;
-  width: 15%;
-  height: .6em;
-} */
+  width: 10%;
+  height: .9em;
+}
+
 h3, .rightResults, .wrongResults{
   font-family: itc-american-typewriter, serif;
   text-align: center;
   font-size: 30px;
-
-
 }
 
 #results-hd {
@@ -39,18 +36,19 @@ h3, .rightResults, .wrongResults{
 font-size: 50px;
 text-align: center;
 }
+
 #format-answers {
   font-family: itc-american-typewriter, serif;
-  font-size: 28px;
+  font-size: 26px;
   margin-bottom: 10px;
   margin-top: 10px;
   margin-left: 75px;
 
 
 }
-#question-format{
+#format-questions{
   font-family: itc-american-typewriter, serif;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   margin-left: 75px;
   margin-top: 30px;
@@ -76,10 +74,16 @@ text-align: center;
   opacity: 1;
 
 }
+.no-time {
+  font-family: itc-american-typewriter, serif;
+  color: #4484b9;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+}
 
 #startBtn {
   opacity: 1;
-  z-index: 1;
   height: 200px;
   width: 300px;
   font-size: 100px;
@@ -100,13 +104,16 @@ button {
   height: 75px;
   width: 100%;
   font-size: 50px;
-  background: #4484b9;
-  color: white;
-  padding-bottom: 20px;
+  background: #white;
+  border: 1px solid black;
+  color: black;
 }
 
+
+
 button:hover {
-background: #68a9df;
+color: white;
+background: #4484b9;
 }
 
 .sticky {
@@ -116,4 +123,11 @@ background: #68a9df;
   top: 0;
   left: 0;
   width: 100%;
+}
+.height-class-results {
+  height: 320px;
+}
+
+.height-class-questions {
+  height: 3700px;
 }
