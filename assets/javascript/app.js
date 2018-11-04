@@ -1,7 +1,7 @@
 var correct = 0;
 var incorrect = 0;
 var submitBtn = null;
-var seconds = 90;
+var seconds = 91;
 var intervalId = null;
 
 // for (var i = 0; i < questions.length; i++) {
@@ -151,6 +151,7 @@ var tick = function() {
     $("button").hide()
     $("#times-up").css("display", "initial")
     $("#times-up").html("<h1 class='no-time'>You've run out of time!</h2>")
+    $(".add-a-class-questions").removeClass("height-class-questions height-class-results h-auto").addClass("height-class-out-of-time")
     $("#times-up-reset").show()
     $("#times-up-reset").on("click", resetGame)
 
@@ -204,7 +205,7 @@ var resetGame = function() {
   $("#contentDiv").show()
   $("#submit").show()
   $(".add-a-class-questions").removeClass("h-auto").addClass("height-class-questions")
-  seconds = 90;
+  seconds = 91;
   clearInterval(intervalId);
   timer()
 
